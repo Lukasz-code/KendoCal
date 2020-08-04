@@ -30,11 +30,12 @@ public class CalendarApi {
     public Optional<User> getById (@RequestParam Long id) {
             return users.findById(id);
     }
+    
     @DeleteMapping
     public void deleteUser(@RequestParam Long id) {
         users.deleteById(id);
-
     }
+
     @PutMapping
     public User updateUser(@RequestBody User user) {
         return users.save(user);

@@ -1,62 +1,82 @@
-package pl.lukaszcode.calendar.dao.entity;
+package pl.lukaszcode.calendar.domain;
+
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
+@Table(name="USER")
 public class User {
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ID", unique = true)
     private Long id;
+
+    @Column(name="FIRST_NAME")
     private String firstName;
+
+    @Column(name="LAST_NAME")
     private String lastName;
-    private LocalDate createdNow;
+
+    @Column(name="DEGREE")
+    private String degree;
+
+    @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumn(name="CALENDAR_DATE")
+    private Calendar calendar;
 
     public User () {
     }
 
-    public User(Long id, String firstName, String lastName, LocalDate createdNow) {
+    public User(Long id, String firstName, String lastName) {
+    }
 
+    public Calendar getCalendar() {
+        return calendar;
+    }
+
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
+    }
+
+    public User(Long id, String firstName, String lastName, String degree) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.createdNow = createdNow;
+        this.degree = degree;
     }
-
 
     public Long getId() {
         return id;
-    }
-
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-
-    public String getLastName() {
-        return lastName;
-    }
-
-
-    public LocalDate getCreatedNow() {
-        return createdNow;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public void setCreatedNow(LocalDate createdNow) {
-        this.createdNow = createdNow;
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
     }
 }

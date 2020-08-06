@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="CALLENDAR")
-public class Callendar {
+@Table(name="CALENDAR")
+public class Calendar {
 
     @Id
     @NotNull
@@ -18,9 +18,9 @@ public class Callendar {
     @Column(name="EXERCISE_DATE")
     private Timestamp date;
 
-    public Callendar() {}
+    public Calendar() {}
 
-    public Callendar(Long callendarId, Timestamp date) {
+    public Calendar(Long callendarId, Timestamp date) {
         this.callendarId = callendarId;
         this.date = date;
     }

@@ -1,9 +1,9 @@
-package pl.lukaszcode.calendar.manager;
+package pl.lukaszcode.calendar.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.lukaszcode.calendar.dao.UserRepo;
-import pl.lukaszcode.calendar.dao.entity.User;
+import pl.lukaszcode.calendar.repository.UserRepo;
+import pl.lukaszcode.calendar.domain.User;
 
 import java.util.Optional;
 
